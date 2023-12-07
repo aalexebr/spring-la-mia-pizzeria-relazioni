@@ -1,0 +1,69 @@
+<!doctype html>
+<!-- html tag with Thymeleaf -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Bootstrap CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+	<title>home</title>
+</head>
+<body>
+	
+	<main>
+		<h1 th:if="${pizzas.size() ==  0}">no pizzas found</h1>
+		<div class="container p-4" th:if="${pizzas.size() > 0}">
+			
+			<h1>
+				Pizzas:
+			</h1>
+			<table class="table border">
+			  <thead class="thead-dark">
+			    <tr>
+			      <th scope="col">ID</th>
+			      <th scope="col">Name</th>
+			      <th scope="col">Price</th>
+			      <th scope="col">Description</th>
+			      <th scope="col">link</th>
+			      <th scope="col">edit</th>
+			      <th scope="col">delete</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <tr th:each="pizza : ${pizzas}">
+			      <th scope="row">[[${pizza.id}]]</th>
+			      <td>[[${pizza.name}]]</td>
+			      <td>[[${pizza.price}]]</td>
+			      <td>[[${pizza.description}]]</td>
+			      <td><a th:href="@{/pizza/{id}(id=${pizza.id})}">link</a></td>
+			      <td><a th:href="@{/pizza/edit/{id}(id=${pizza.id})}">edit</a></td>
+			      <td>
+					  <form 
+						th:action="@{/pizza/delete/{id} (id=${pizza.id})}"
+						method="POST">
+					
+						<button type="submit" class="btn btn-danger">delete</button>	
+					</form>
+				  </td>
+			    </tr>
+			  </tbody>
+			</table>
+			
+			<form>
+			  <div class="mb-3">
+			    <label for="name" class="form-label">name of pizza</label>
+			    <input th:value="${query}"
+			    	type="text" name="query" class="form-control" id="name" aria-describedby="name">
+			  </div>
+			  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+			<div class="py-4">
+				<a th:href="@{/pizza/create}"
+					class="btn btn-success">create pizza</a>
+			</div>
+		</div>
+
+	</main>
+</body>
+</html>
