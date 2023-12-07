@@ -1,0 +1,27 @@
+<!doctype html>
+<!-- html tag with Thymeleaf -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Bootstrap CSS -->
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+	<title>create offer</title>
+</head>
+<body>
+	
+	<div class="container py-5">
+		<form method="POST">
+			<label>insert title</label>
+			<input type="text" name="title">
+			<label>start date</label>
+			<input type="date" name="startDate">
+			<label>end date</label>
+			<input type="date" name="endDate">
+			<button type="submit">submit</button>
+		</form>
+	</div>
+
+</body>
+</html>

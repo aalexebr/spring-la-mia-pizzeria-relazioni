@@ -3,8 +3,11 @@ package org.java.spring.controller;
 
 import java.util.List;
 
+import org.java.spring.DTO.SpecialOfferDTO;
 import org.java.spring.pojo.Pizza;
+import org.java.spring.pojo.SpecialOffer;
 import org.java.spring.service.PizzaService;
+import org.java.spring.service.SpecialOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +26,9 @@ public class MainController {
 	
 	@Autowired
 	PizzaService pizzaService;
+	
+	@Autowired
+	SpecialOfferService spOffService;
 	
 	@GetMapping("/")
 	public String home(Model model,
@@ -122,6 +128,28 @@ public class MainController {
 		
 		return "redirect:/";
 	}
+	
+	@GetMapping("/pizza/special-offer/{id}")
+	public String addSpecialOffer(@PathVariable int id) {
+		
+		
+		return("create-offer");
+	}
+	
+	@PostMapping("/pizza/special-offer/{id}")
+	public String storeSpecialOffer(@PathVariable int id,
+			@ModelAttribute SpecialOfferDTO modelDTO) {
+		Pizza p = pizzaService.findById(id);
+		
+		SpecialOffer x = new SpecialOffer(modelDTO.getStartDate(),
+				modelDTO.getEndDate(),modelDTO.getTitle(),p);
+		
+		spOffService.save(x);
+		
+		
+		return "redirect:/";
+	}
+	
 	
 	
 
