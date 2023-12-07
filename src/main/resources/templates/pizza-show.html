@@ -20,12 +20,13 @@
 			</div>
 			
 			<ul th:if="${pizza.specialOffer.size > 0}">
+				<h3>list of special orders:</h3>
 				<li th:each="offer : ${pizza.specialOffer}">
 					[[${offer}]]
 				</li>
 			</ul>
 			
-			<a th:href="@{/pizza/special-offer/{id}(id=${pizza.id})}">add special offer</a>
+			<a class="btn btn-primary" th:href="@{/pizza/special-offer/{id}(id=${pizza.id})}">add special offer</a>
 		</div>
 	</body>
 </html>

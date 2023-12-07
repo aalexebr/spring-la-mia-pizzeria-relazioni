@@ -81,7 +81,7 @@ public class SpecialOffer {
 	
 	@Override
 	public String toString() {
-		return getTitle()+"  ["+getStartDate()+" - "+getEndDate()+"]"+" - "+getPizza();
+		return getTitle()+"  [from: "+getStartDate()+" until: "+getEndDate()+"]";
 	}
 
 }

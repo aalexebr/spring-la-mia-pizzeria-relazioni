@@ -2,10 +2,21 @@ package org.java.spring.DTO;
 
 import java.time.LocalDate;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 public class SpecialOfferDTO {
 	
+	@NotBlank(message = "Name is mandatory")
+	@NotNull(message = "Name cannot be null")
+	@NotEmpty(message = "Name cannot be null")
 	private String title;
+	
+	@NotNull(message = "date cannot be null")
 	private LocalDate startDate;
+	
+	@NotNull(message = "date cannot be null")
 	private LocalDate endDate;
 	public String getTitle() {
 		return title;

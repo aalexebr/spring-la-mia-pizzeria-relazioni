@@ -25,7 +25,7 @@
 			      <th scope="col">Name</th>
 			      <th scope="col">Price</th>
 			      <th scope="col">Description</th>
-			      <th scope="col">link</th>
+			      <th scope="col">view</th>
 			      <th scope="col">edit</th>
 			      <th scope="col">delete</th>
 			    </tr>
@@ -36,8 +36,8 @@
 			      <td>[[${pizza.name}]]</td>
 			      <td>[[${pizza.price}]]</td>
 			      <td>[[${pizza.description}]]</td>
-			      <td><a th:href="@{/pizza/{id}(id=${pizza.id})}">link</a></td>
-			      <td><a th:href="@{/pizza/edit/{id}(id=${pizza.id})}">edit</a></td>
+			      <td><a class="btn btn-primary" th:href="@{/pizza/{id}(id=${pizza.id})}">show pizza</a></td>
+			      <td><a class="btn btn-success" th:href="@{/pizza/edit/{id}(id=${pizza.id})}">edit</a></td>
 			      <td>
 					  <form 
 						th:action="@{/pizza/delete/{id} (id=${pizza.id})}"
@@ -52,11 +52,11 @@
 			
 			<form>
 			  <div class="mb-3">
-			    <label for="name" class="form-label">name of pizza</label>
+			    <label for="name" class="form-label">serch by name of pizza</label>
 			    <input th:value="${query}"
 			    	type="text" name="query" class="form-control" id="name" aria-describedby="name">
 			  </div>
-			  <button type="submit" class="btn btn-primary">Submit</button>
+			  <button type="submit" class="btn btn-primary">Search</button>
 			</form>
 			<div class="py-4">
 				<a th:href="@{/pizza/create}"

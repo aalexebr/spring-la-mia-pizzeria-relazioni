@@ -2,9 +2,7 @@ package org.java.spring.service;
 
 import java.util.List;
 
-import org.java.spring.pojo.Pizza;
 import org.java.spring.pojo.SpecialOffer;
-import org.java.spring.repo.PizzaRepository;
 import org.java.spring.repo.SpecialOfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
