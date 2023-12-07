@@ -170,6 +170,12 @@ public class MainController {
 			@Valid @ModelAttribute SpecialOfferDTO modelDTO, 
 			BindingResult bindingResult) {
 		
+		if(bindingResult.hasErrors()) {
+			System.out.println(bindingResult);
+			model.addAttribute("modelDTO",bindingResult);
+			return ("update-offer");
+		}
+		
 		SpecialOffer x = spOffService.findById(id);
 		System.out.println(x);
 		x.setTitle(modelDTO.getTitle());
