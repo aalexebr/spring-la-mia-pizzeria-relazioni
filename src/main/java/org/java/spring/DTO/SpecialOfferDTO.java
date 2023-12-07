@@ -2,6 +2,8 @@ package org.java.spring.DTO;
 
 import java.time.LocalDate;
 
+import org.java.spring.pojo.Pizza;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -18,6 +20,7 @@ public class SpecialOfferDTO {
 	
 	@NotNull(message = "date cannot be null")
 	private LocalDate endDate;
+	
 	public String getTitle() {
 		return title;
 	}

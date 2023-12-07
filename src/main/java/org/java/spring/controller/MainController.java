@@ -143,6 +143,7 @@ public class MainController {
 		
 		if(bindingResult.hasErrors()) {
 			System.out.println(bindingResult);
+			model.addAttribute("modelDTO",bindingResult);
 			return ("create-offer");
 		}
 		Pizza p = pizzaService.findById(id);
@@ -155,7 +156,29 @@ public class MainController {
 		return ("redirect:/pizza/"+id);
 	}
 	
+	@GetMapping("pizza/update-special-offer/{id}")
+	public String editSpOffer(@PathVariable int id,
+			Model model) {
+		SpecialOffer x = spOffService.findById(id);
+		model.addAttribute("offer", x);
+		return("update-offer");
+	}
 	
+	@PostMapping("pizza/update-special-offer/{id}")
+	public String updateSpOffre(@PathVariable int id,
+			Model model,
+			@Valid @ModelAttribute SpecialOfferDTO modelDTO, 
+			BindingResult bindingResult) {
+		
+		SpecialOffer x = spOffService.findById(id);
+		System.out.println(x);
+		x.setTitle(modelDTO.getTitle());
+		x.setStartDate(modelDTO.getStartDate());
+		x.setEndDate(modelDTO.getEndDate());
+		spOffService.save(x);
+		System.out.println(x);
+		return "redirect:/";
+	}
 	
 
 }

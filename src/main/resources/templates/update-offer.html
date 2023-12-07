@@ -12,21 +12,16 @@
 <body>
 	
 	<div class="container py-5">
-		<form method="POST" th:object="${modelDTO}">
+		<form method="POST" th:object="${offer}">
 			<label>insert title</label>
-			<input type="text" name="title">
+			<input th:field="*{title}"
+				type="text" name="title">
 			<label>start date</label>
-			<input type="date" name="startDate">
+			<input th:field="*{startDate}" th:value="${#dates.format(offer.startDate, 'yyyy-MM-dd')}"
+				type="date" name="startDate">
 			<label>end date</label>
 			<input type="date" name="endDate">
 			<button class="btn btn-primary" type="submit">submit</button>
-			<div th:if="${modelDTO.hasErrors()}"> 
-				<ul th:each="err : ${modelDTO}">
-					<li>
-						[[${err}]]
-					</li>
-				</ul>
-			</div>
 		</form>
 		
 	</div>
