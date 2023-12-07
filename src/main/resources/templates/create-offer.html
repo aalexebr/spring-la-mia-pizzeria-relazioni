@@ -12,15 +12,24 @@
 <body>
 	
 	<div class="container py-5">
-		<form method="POST">
+		<form method="POST" th:object="${modelDTO}">
 			<label>insert title</label>
 			<input type="text" name="title">
+			<div th:replace="fragments :: errorDiv('title')" />
 			<label>start date</label>
 			<input type="date" name="startDate">
 			<label>end date</label>
 			<input type="date" name="endDate">
 			<button class="btn btn-primary" type="submit">submit</button>
-			
+			<div th:if="${modelDTO} != null">questo lo legge se c'è errore'
+				<ul>
+					<li
+					th:each="err : ${#fields.allErrors()}"
+					th:text="${err}">
+					</li>
+					</ul>
+			</div>
+			<div th:if="${#fields.allErrors()} != null">[[${#fields.errors()}]]</div>
 		</form>
 		
 	</div>

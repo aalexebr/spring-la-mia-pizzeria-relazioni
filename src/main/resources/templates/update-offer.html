@@ -17,10 +17,11 @@
 			<input th:field="*{title}"
 				type="text" name="title">
 			<label>start date</label>
-			<input th:field="*{startDate}" 
+			<input th:value="*{startDate}" 
 				type="date" name="startDate">
 			<label>end date</label>
-			<input type="date" name="endDate">
+			<input th:value="*{endDate}"
+				type="date" name="endDate">
 			<button class="btn btn-primary" type="submit">submit</button>
 			
 			<ul>

@@ -130,8 +130,9 @@ public class MainController {
 	}
 	
 	@GetMapping("/pizza/{id}/special-offer")
-	public String addSpecialOffer(@PathVariable int id) {
-
+	public String addSpecialOffer(@PathVariable int id, Model model) {
+//		SpecialOfferDTO modelDTO = new SpecialOfferDTO();
+//		model.addAttribute("modelDTO", modelDTO);
 		return("create-offer");
 	}
 	
@@ -143,7 +144,7 @@ public class MainController {
 		
 		if(bindingResult.hasErrors()) {
 			System.out.println(bindingResult);
-			model.addAttribute("modelDTO",bindingResult);
+			model.addAttribute("modelDTO",modelDTO);
 			return ("create-offer");
 		}
 		Pizza p = pizzaService.findById(id);

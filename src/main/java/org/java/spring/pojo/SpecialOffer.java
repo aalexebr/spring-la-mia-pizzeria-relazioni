@@ -2,6 +2,8 @@ package org.java.spring.pojo;
 
 import java.time.LocalDate;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,8 +18,10 @@ public class SpecialOffer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+//	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate startDate;
 	
+//	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate endDate;
 	
 	@Column(nullable = false, length = 32)

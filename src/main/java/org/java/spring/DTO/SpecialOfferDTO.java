@@ -3,6 +3,7 @@ package org.java.spring.DTO;
 import java.time.LocalDate;
 
 import org.java.spring.pojo.Pizza;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -16,9 +17,11 @@ public class SpecialOfferDTO {
 	private String title;
 	
 	@NotNull(message = "date cannot be null")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate startDate;
 	
 	@NotNull(message = "date cannot be null")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate endDate;
 	
 	public String getTitle() {
