@@ -172,7 +172,9 @@ public class MainController {
 		
 		if(bindingResult.hasErrors()) {
 			System.out.println(bindingResult);
-			model.addAttribute("modelDTO",bindingResult);
+			SpecialOffer x = spOffService.findById(id);
+			model.addAttribute("offer", x);
+//			model.addAttribute("modelDTO",bindingResult);
 			return ("update-offer");
 		}
 		
