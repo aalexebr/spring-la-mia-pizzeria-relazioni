@@ -89,7 +89,7 @@ public class MainController {
 		
 		Pizza pizza = pizzaService.findById(id);
 		model.addAttribute("pizza", pizza);
-		System.out.println(pizza);	
+//		System.out.println(pizza);	
 		return("update");
 	}
 	
@@ -129,13 +129,13 @@ public class MainController {
 		return "redirect:/";
 	}
 	
-	@GetMapping("/pizza/special-offer/{id}")
+	@GetMapping("/pizza/{id}/special-offer")
 	public String addSpecialOffer(@PathVariable int id) {
 
 		return("create-offer");
 	}
 	
-	@PostMapping("/pizza/special-offer/{id}")
+	@PostMapping("/pizza/{id}/special-offer")
 	public String storeSpecialOffer(Model model,
 			@PathVariable int id,
 			@Valid @ModelAttribute SpecialOfferDTO modelDTO,
@@ -179,13 +179,14 @@ public class MainController {
 		}
 		
 		SpecialOffer x = spOffService.findById(id);
-		System.out.println(x);
+		
 		x.setTitle(modelDTO.getTitle());
 		x.setStartDate(modelDTO.getStartDate());
 		x.setEndDate(modelDTO.getEndDate());
 		spOffService.save(x);
-		System.out.println(x);
-		return "redirect:/";
+		
+		int n = x.getPizza().getId();
+		return ("redirect:/pizza/"+n);
 	}
 	
 
