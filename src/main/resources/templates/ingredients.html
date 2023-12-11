@@ -16,12 +16,19 @@
 			th:href="@{/create-ingredient}">
 			add 
 		</a>
+		<a th:href="@{/}">home</a>
 		<div th:if="${ingredients.size()>0}">
 			<h1>List of Ingredients</h1>
 			<ul>
 				<li 
 					th:each="ingredient : ${ingredients}">
 					[[${ingredient}]]
+					<form method="POST"
+						th:action="@{/ingredient/delete/{id} (id=${ingredient.id})}">
+						<button type="submit" class="btn btn-danger">
+							delete
+						</button>
+					</form>
 				</li>
 			</ul>
 		</div>

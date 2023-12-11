@@ -45,8 +45,8 @@ public class SpringLaMiaPizzeriaRelazioni1Application implements CommandLineRunn
 		
 		pizzaService.save(new Pizza("pizza1",5.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png",a,b));
 		pizzaService.save(new Pizza("pizza2",6.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png",e));
-		pizzaService.save(new Pizza("pizza3",7.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png"));
-		pizzaService.save(new Pizza("pizza4",8.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png"));
+		pizzaService.save(new Pizza("pizza3",7.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png",a));
+		pizzaService.save(new Pizza("pizza4",8.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png",a));
 		pizzaService.save(p);
 		
 		specialOrderService.save(new SpecialOffer(LocalDate.now(),LocalDate.now().plusDays(7),"promotion111",p));

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -59,6 +60,12 @@ public class Ingredient {
 
 	public void setPizzas(List<Pizza> pizzas) {
 		this.pizzas = pizzas;
+	}
+	
+	public void clearPizzas() {
+		for(Pizza pizza : getPizzas()) {
+			pizza.clearIngredient(this);
+		}
 	}
 	
 	@Override

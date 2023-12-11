@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
+import org.java.spring.service.IngredientService;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -126,6 +127,14 @@ public class Pizza {
 	
 	public void setIngredients(Ingredient[] ingredients) {
 		setIngredients(Arrays.asList(ingredients));
+	}
+	
+	public void clearIngredient(Ingredient ingredient) {
+		getIngredients().remove(ingredient);
+	}
+	
+	public void clearIngredients() {
+		getIngredients().clear();
 	}
 
 	@Override

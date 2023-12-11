@@ -4,8 +4,10 @@ package org.java.spring.controller;
 import java.util.List;
 
 import org.java.spring.DTO.SpecialOfferDTO;
+import org.java.spring.pojo.Ingredient;
 import org.java.spring.pojo.Pizza;
 import org.java.spring.pojo.SpecialOffer;
+import org.java.spring.service.IngredientService;
 import org.java.spring.service.PizzaService;
 import org.java.spring.service.SpecialOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,9 @@ public class MainController {
 	@Autowired
 	SpecialOfferService spOffService;
 	
+	@Autowired
+	IngredientService ingService;
+	
 	@GetMapping("/")
 	public String home(Model model,
 			@RequestParam(required = false) String query) {
@@ -52,7 +57,11 @@ public class MainController {
 	@GetMapping("/pizza/create")
 	public String createPizza(Model model) {
 		Pizza newPizza = new Pizza();
+		List<Ingredient> ingredients = ingService.findAll();
+		
 		model.addAttribute("pizza", newPizza);
+		model.addAttribute("ingredients",ingredients);
+		
 		return("pizza-create");
 	}
 	
@@ -88,7 +97,10 @@ public class MainController {
 			@PathVariable int id) {
 		
 		Pizza pizza = pizzaService.findById(id);
+		List<Ingredient> ingredients = ingService.findAll();
+		
 		model.addAttribute("pizza", pizza);
+		model.addAttribute("ingredients",ingredients);
 //		System.out.println(pizza);	
 		return("update");
 	}
@@ -123,6 +135,8 @@ public class MainController {
 	public String deleteBook(@PathVariable int id) {
 		
 		Pizza pizza = pizzaService.findById(id);
+		
+		pizza.clearIngredients();
 		
 		pizzaService.delete(pizza);
 		
