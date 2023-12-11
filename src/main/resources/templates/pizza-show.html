@@ -33,7 +33,7 @@
 				<h3>list of special orders:</h3>
 				<li th:each="offer : ${pizza.specialOffer}">
 					[[${offer}]]
-					<a th:href="@{update-special-offer/{id}(id=${offer.id})}">link</a>
+					<a th:href="@{update-special-offer/{id}(id=${offer.id})}">edit</a>
 				</li>
 			</ul>
 			
