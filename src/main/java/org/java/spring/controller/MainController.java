@@ -138,6 +138,8 @@ public class MainController {
 		
 		pizza.clearIngredients();
 		
+		pizza.getSpecialOffer().forEach(spOffService::delete);
+		
 		pizzaService.delete(pizza);
 		
 		return "redirect:/";
