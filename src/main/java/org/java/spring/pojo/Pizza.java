@@ -129,8 +129,10 @@ public class Pizza {
 		setIngredients(Arrays.asList(ingredients));
 	}
 	
-	public void clearIngredient(Ingredient ingredient) {
-		getIngredients().remove(ingredient);
+	public void clearIngredients(Ingredient... ingredient) {
+		for(Ingredient j : ingredient) {
+			getIngredients().remove(j);
+		}	
 	}
 	
 	public void clearIngredients() {
@@ -140,7 +142,7 @@ public class Pizza {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "["+getId()+"]"+" - "+getName()+" - "+getPrice()+"\n"
+		return "["+getId()+"]"+" - "+getName()+" - "+getPrice()+"$ - "
 				+getDescription();
 	}
 }

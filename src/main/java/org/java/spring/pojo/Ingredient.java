@@ -64,7 +64,7 @@ public class Ingredient {
 	
 	public void clearPizzas() {
 		for(Pizza pizza : getPizzas()) {
-			pizza.clearIngredient(this);
+			pizza.clearIngredients(this);
 		}
 	}
 	

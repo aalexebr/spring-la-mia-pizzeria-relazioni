@@ -11,6 +11,8 @@
 </head>
 	<body>
 		<div class="container">
+			<a th:href="@{/}">home</a>
+			<a class="btn btn-primary" th:href="@{/pizza/edit/{id} (id=${pizza.id})}">edit pizza</a>
 			<h1>pizza:</h1>
 			<div>
 				[[${pizza}]]
@@ -26,7 +28,6 @@
 					[[${ing.name}]]
 				</li>
 			</ul>
-			<a class="btn btn-primary" th:href="@{/pizza/edit/{id} (id=${pizza.id})}">add ingredients or edit pizza</a>
 			
 			<ul th:if="${pizza.specialOffer.size > 0}">
 				<h3>list of special orders:</h3>
