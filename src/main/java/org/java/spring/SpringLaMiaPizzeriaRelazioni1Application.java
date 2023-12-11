@@ -33,12 +33,18 @@ public class SpringLaMiaPizzeriaRelazioni1Application implements CommandLineRunn
 	public void run(String... args) throws Exception {
 		
 		Ingredient a = new Ingredient("flour");
+		Ingredient b = new Ingredient("olive oil");
+		Ingredient c = new Ingredient("salt");
+		Ingredient e = new Ingredient("garlic");
 		ingredientService.save(a);
+		ingredientService.save(b);
+		ingredientService.save(c);
+		ingredientService.save(e);
 		
 		Pizza p = new Pizza("pizza5",8.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png");
 		
-		pizzaService.save(new Pizza("pizza1",5.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png"));
-		pizzaService.save(new Pizza("pizza2",6.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png"));
+		pizzaService.save(new Pizza("pizza1",5.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png",a,b));
+		pizzaService.save(new Pizza("pizza2",6.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png",e));
 		pizzaService.save(new Pizza("pizza3",7.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png"));
 		pizzaService.save(new Pizza("pizza4",8.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png"));
 		pizzaService.save(p);

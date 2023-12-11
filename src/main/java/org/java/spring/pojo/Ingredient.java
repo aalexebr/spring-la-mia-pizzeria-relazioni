@@ -64,7 +64,7 @@ public class Ingredient {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return "Category: "+getName();
+		return getName();
 	}
 	
 
