@@ -2,8 +2,10 @@ package org.java.spring;
 
 import java.time.LocalDate;
 
+import org.java.spring.pojo.Ingredient;
 import org.java.spring.pojo.Pizza;
 import org.java.spring.pojo.SpecialOffer;
+import org.java.spring.service.IngredientService;
 import org.java.spring.service.PizzaService;
 import org.java.spring.service.SpecialOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +26,14 @@ public class SpringLaMiaPizzeriaRelazioni1Application implements CommandLineRunn
 	@Autowired
 	private SpecialOfferService specialOrderService;
 	
+	@Autowired
+	private IngredientService ingredientService;
+	
 	@Override
 	public void run(String... args) throws Exception {
+		
+		Ingredient a = new Ingredient("flour");
+		ingredientService.save(a);
 		
 		Pizza p = new Pizza("pizza5",8.99,"descr1","https://cdn.drawception.com/drawings/709036/HX97OgbklV.png");
 		
